@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="467198c3-5554-4e72-bca1-2778261ee0c6" activeEnvironment="Default" name="MercuriusService Testplan" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="3342b32c-23f5-4b3b-aaec-57ad3c211c96" wsaVersion="NONE" name="simplepriorSOAP" type="wsdl" bindingName="{http://fsb.belgium.be/einvoicing/simpleprior/v1_00}simplepriorSOAP" soapVersion="1_1" anonymous="optional" definition="file:/F:/SoapUI-projects/simpl.eprior/simpleprior.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/F:/SoapUI-projects/simpl.eprior/simpleprior.wsdl"><con:part><con:url>file:/F:/SoapUI-projects/simpl.eprior/simpleprior.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="simpleprior" targetNamespace="http://fsb.belgium.be/einvoicing/simpleprior/v1_00" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://fsb.belgium.be/einvoicing/simpleprior/v1_00" xmlns:agg="urn:oasis:natns:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://fsb.belgium.be/einvoicing/simpleprior/v1_00" elementFormDefault="qualified" attributeFormDefault="unqualified">
+      <xsd:element name="consumerId">
+        <xsd:complexType>
+          <xsd:simpleContent>
+            <xsd:extension base="xsd:normalizedString"/>
+          </xsd:simpleContent>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="submitDocument">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="document" type="tns:UBLDocumentType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="submitDocumentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ackIndicator" type="xsd:boolean"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="retrieveDocument">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="receiverId" type="xsd:normalizedString"/>
+            <xsd:element name="senderId" type="xsd:normalizedString"/>
+            <xsd:element name="documentType" type="xsd:normalizedString"/>
+            <xsd:element name="documentId" type="xsd:normalizedString"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="retrieveDocumentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="receivedDate" type="xsd:date"/>
+            <xsd:element name="document" type="tns:UBLDocumentType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="submitInboxRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="receiverId" type="xsd:string"/>
+            <xsd:element name="senderId" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="submitInboxRequestResponse" type="tns:SubmitInboxRequestResponseType"/>
+      <xsd:complexType name="UBLDocumentType">
+        <xsd:sequence>
+          <xsd:any processContents="skip"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DocumentReferenceType">
+        <xsd:sequence>
+          <xsd:element name="receiverId" type="xsd:normalizedString"/>
+          <xsd:element name="senderId" type="xsd:normalizedString"/>
+          <xsd:element name="documentType" type="xsd:normalizedString"/>
+          <xsd:element name="documentId" type="xsd:normalizedString"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SubmitInboxRequestResponseType">
+        <xsd:sequence>
+          <xsd:element name="documentGroup">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="documentReference" type="tns:DocumentReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="markDocument">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="receiverId" type="xsd:normalizedString"/>
+            <xsd:element name="senderId" type="xsd:normalizedString"/>
+            <xsd:element name="documentType" type="xsd:normalizedString"/>
+            <xsd:element name="documentId" type="xsd:normalizedString"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="markDocumentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ackIndicator" type="xsd:boolean"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="submitDocumentRequest">
+    <wsdl:part name="body" element="tns:submitDocument"/>
+  </wsdl:message>
+  <wsdl:message name="submitDocumentResponse">
+    <wsdl:part element="tns:submitDocumentResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveDocumentRequest">
+    <wsdl:part name="body" element="tns:retrieveDocument"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveDocumentResponse">
+    <wsdl:part name="response" element="tns:retrieveDocumentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="submitInboxRequestRequest">
+    <wsdl:part name="body" element="tns:submitInboxRequest"/>
+  </wsdl:message>
+  <wsdl:message name="submitInboxRequestResponse">
+    <wsdl:part name="response" element="tns:submitInboxRequestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="markDocumentRequest">
+    <wsdl:part name="body" element="tns:markDocument"/>
+  </wsdl:message>
+  <wsdl:message name="markDocumentResponse">
+    <wsdl:part name="response" element="tns:markDocumentResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="simpleprior">
+    <wsdl:operation name="submitDocument">
+      <wsdl:input message="tns:submitDocumentRequest"/>
+      <wsdl:output message="tns:submitDocumentResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveDocument">
+      <wsdl:input message="tns:retrieveDocumentRequest"/>
+      <wsdl:output message="tns:retrieveDocumentResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitInboxRequest">
+      <wsdl:input message="tns:submitInboxRequestRequest"/>
+      <wsdl:output message="tns:submitInboxRequestResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="markDocument">
+      <wsdl:input message="tns:markDocumentRequest"/>
+      <wsdl:output message="tns:markDocumentResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="simplepriorSOAP" type="tns:simpleprior">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="submitInboxRequest">
+      <soap:operation style="document" soapAction="submitInboxRequest"/>
+      <wsdl:input>
+        <soap:header message="tns:consumerIdHeader" part="consumerId" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="response" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveDocument">
+      <soap:operation style="document" soapAction="retrieveDocument"/>
+      <wsdl:input>
+        <soap:header message="tns:consumerIdHeader" part="consumerId" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="response" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitDocument">
+      <soap:operation style="document" soapAction="submitDocument"/>
+      <wsdl:input>
+        <soap:header message="tns:consumerIdHeader" part="consumerId" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="response" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="markDocument">
+      <soap:operation style="document" soapAction="markDocument"/>
+      <wsdl:input>
+        <soap:header message="tns:consumerIdHeader" part="consumerId" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="response" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="simpleprior">
+    <wsdl:port binding="tns:simplepriorSOAP" name="simplepriorSOAP">
+      <soap:address location="{{location}}"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://dwsoft2016:8088/mocksimplepriorSOAP</con:endpoint><con:endpoint>https://babelway.net/simpleprior/</con:endpoint><con:endpoint>{{location}}</con:endpoint></con:endpoints><con:operation id="5e599da7-a81a-461f-99e5-db2596ea73d0" isOneWay="false" action="markDocument" name="markDocument" bindingOperationName="markDocument" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3ac76cb9-b5c7-464f-8e41-b018bb26891a" name="Mark Invoice BIS 5A"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mocksimplepriorSOAP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:head="http://fsb.belgium.be/header" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">\r
+   <soapenv:Header/>\r
+      <head:fsbHeader>
+         <head:messageId>9397cbe5-174f-479f-941d-2371129acb05</head:messageId>
+      </head:fsbHeader>
+   <soapenv:Body>\r
+      <v1:markDocument>\r
+         <v1:receiverId>2222222222</v1:receiverId>
+         <v1:senderId>0200013901</v1:senderId>
+         <v1:documentType>380</v1:documentType>
+         <v1:documentId>e878b54b-8a82-4bf3-8c8c-37eacdab2589</v1:documentId>
+      </v1:markDocument>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="markDocument"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ee38939f-51b1-4426-a564-bc21dc3a06a2" isOneWay="false" action="retrieveDocument" name="retrieveDocument" bindingOperationName="retrieveDocument" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="db5576ff-578c-4418-8a3b-61990832edd0" name="Retrieve Invoice BIS 5A"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mocksimplepriorSOAP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:head="http://fsb.belgium.be/header" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">\r
+   <soapenv:Header/>\r
+      <head:fsbHeader>
+         <head:messageId>9397cbe5-174f-479f-941d-2371129acb05</head:messageId>
+      </head:fsbHeader>
+   <soapenv:Body>\r
+      <v1:retrieveDocument>
+         <v1:receiverId>2222222222</v1:receiverId>
+         <v1:senderId>0200013901</v1:senderId>
+         <v1:documentType>380</v1:documentType>
+         <v1:documentId>e878b54b-8a82-4bf3-8c8c-37eacdab2589</v1:documentId>
+      </v1:retrieveDocument>
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="retrieveDocument"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="b7cf5a25-6b99-4d78-a4bd-86f3d2fce5f8" isOneWay="false" action="submitDocument" name="submitDocument" bindingOperationName="submitDocument" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5121c800-55b1-4a0e-b4ee-a37cf476ee7f" name="Invoice BIS 5A"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mocksimplepriorSOAP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:head="http://fsb.belgium.be/header" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">\r
+   <soapenv:Header/>\r
+      <head:fsbHeader>
+         <head:messageId>9397cbe5-174f-479f-941d-2371129acb05</head:messageId>
+      </head:fsbHeader>
+   <soapenv:Body>\r
+      <v1:submitDocument>\r
+         <v1:document>\r
+            <Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
+            		xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
+            		xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">\r
+               <cbc:UBLVersionID>2.1</cbc:UBLVersionID>\r
+               <cbc:CustomizationID>urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol5a:ver2.0</cbc:CustomizationID>\r
+               <cbc:ProfileID>urn:www.cenbii.eu:profile:bii05:ver2.0</cbc:ProfileID>\r
+               <cbc:ID>118120479086FAKSEP-4-5A</cbc:ID>\r
+               <cbc:IssueDate>2018-06-12</cbc:IssueDate>\r
+               <cbc:InvoiceTypeCode listID="UNCL1001">380</cbc:InvoiceTypeCode>\r
+               <cbc:DocumentCurrencyCode listID="ISO4217">EUR</cbc:DocumentCurrencyCode>\r
+               <cac:AccountingSupplierParty>\r
+                  <cac:Party>\r
+                     <cac:PartyIdentification>\r
+                        <cbc:ID schemeID="BE:CBE">0200013901</cbc:ID>\r
+                     </cac:PartyIdentification>\r
+                     <cac:PartyName>\r
+                        <cbc:Name>ACME</cbc:Name>\r
+                     </cac:PartyName>\r
+                     <cac:PostalAddress>\r
+                        <cbc:StreetName>Simon Bolivarlaan 30/9</cbc:StreetName>\r
+                        <cbc:CityName>BRUSSEL</cbc:CityName>\r
+                        <cbc:PostalZone>1000</cbc:PostalZone>\r
+                        <cac:Country>\r
+                           <cbc:IdentificationCode listID="ISO3166-1:Alpha2">BE</cbc:IdentificationCode>\r
+                        </cac:Country>\r
+                     </cac:PostalAddress>\r
+                     <cac:PartyTaxScheme>\r
+                        <cbc:CompanyID schemeID="BE:VAT">BE0200013901</cbc:CompanyID>\r
+                        <cac:TaxScheme>\r
+                           <cbc:ID>VAT</cbc:ID>\r
+                        </cac:TaxScheme>\r
+                     </cac:PartyTaxScheme>\r
+                     <cac:PartyLegalEntity>\r
+                        <cbc:RegistrationName>D.W. Soft bvba</cbc:RegistrationName>\r
+                        <cbc:CompanyID schemeID="BE:CBE">0200013901</cbc:CompanyID>\r
+                     </cac:PartyLegalEntity>\r
+                     <cac:Contact>\r
+                        <cbc:ElectronicMail>dirk.willekens@dwsoft.be</cbc:ElectronicMail>\r
+                     </cac:Contact>\r
+                  </cac:Party>\r
+               </cac:AccountingSupplierParty>\r
+               <cac:AccountingCustomerParty>\r
+                  <cac:Party>\r
+                     <cac:PartyIdentification>\r
+                        <cbc:ID schemeID="BE:CBE">2222222222</cbc:ID>\r
+                     </cac:PartyIdentification>\r
+                     <cac:PartyName>\r
+                        <cbc:Name>Fake customer</cbc:Name>\r
+                     </cac:PartyName>\r
+                     <cac:PostalAddress>\r
+                        <cbc:StreetName>Simon Bolivarlaan 34</cbc:StreetName>\r
+                        <cbc:CityName>ANTWERPEN</cbc:CityName>\r
+                        <cbc:PostalZone>2000</cbc:PostalZone>\r
+                        <cac:Country>\r
+                           <cbc:IdentificationCode listID="ISO3166-1:Alpha2">BE</cbc:IdentificationCode>\r
+                        </cac:Country>\r
+                     </cac:PostalAddress>\r
+                     <cac:PartyTaxScheme>\r
+                        <cbc:CompanyID schemeID="BE:VAT">BE2222222222</cbc:CompanyID>\r
+                        <cac:TaxScheme>\r
+                           <cbc:ID>VAT</cbc:ID>\r
+                        </cac:TaxScheme>\r
+                     </cac:PartyTaxScheme>\r
+                     <cac:PartyLegalEntity>\r
+                        <cbc:RegistrationName>Fake Customer</cbc:RegistrationName>\r
+                        <cbc:CompanyID schemeID="BE:CBE">2222222222</cbc:CompanyID>\r
+                     </cac:PartyLegalEntity>\r
+                  </cac:Party>\r
+               </cac:AccountingCustomerParty>\r
+               <cac:PaymentMeans>\r
+                  <cbc:PaymentMeansCode listID="UNCL4461">1</cbc:PaymentMeansCode>\r
+                  <cbc:PaymentDueDate>2018-05-31</cbc:PaymentDueDate>\r
+                  <cbc:PaymentChannelCode>IBAN</cbc:PaymentChannelCode>\r
+                  <cbc:InstructionNote>SIMPLE TEST TO FAKE CUSTOMER</cbc:InstructionNote>\r
+                  <cac:PayeeFinancialAccount>\r
+                     <cbc:ID schemeID="IBAN">BE86736009252450</cbc:ID>\r
+                     <cac:FinancialInstitutionBranch>\r
+                        <cac:FinancialInstitution>\r
+                           <cbc:ID schemeID="BIC">KREDBEBB</cbc:ID>\r
+                        </cac:FinancialInstitution>\r
+                     </cac:FinancialInstitutionBranch>\r
+                  </cac:PayeeFinancialAccount>\r
+               </cac:PaymentMeans>\r
+               <cac:TaxTotal>\r
+                  <cbc:TaxAmount currencyID="EUR">21.00</cbc:TaxAmount>\r
+                  <cac:TaxSubtotal>\r
+                     <cbc:TaxableAmount currencyID="EUR">100.00</cbc:TaxableAmount>\r
+                     <cbc:TaxAmount currencyID="EUR">21.00</cbc:TaxAmount>\r
+                     <cac:TaxCategory>\r
+                        <cbc:ID schemeID="UNCL5305">S</cbc:ID>\r
+                        <cbc:Percent>21.00</cbc:Percent>\r
+                        <cac:TaxScheme>\r
+                           <cbc:ID>VAT</cbc:ID>\r
+                        </cac:TaxScheme>\r
+                     </cac:TaxCategory>\r
+                  </cac:TaxSubtotal>\r
+               </cac:TaxTotal>\r
+               <cac:LegalMonetaryTotal>\r
+                  <cbc:LineExtensionAmount currencyID="EUR">100.00</cbc:LineExtensionAmount>\r
+                  <cbc:TaxExclusiveAmount currencyID="EUR">100.00</cbc:TaxExclusiveAmount>\r
+                  <cbc:TaxInclusiveAmount currencyID="EUR">121.00</cbc:TaxInclusiveAmount>\r
+                  <cbc:PayableAmount currencyID="EUR">121.00</cbc:PayableAmount>\r
+               </cac:LegalMonetaryTotal>\r
+               <cac:InvoiceLine>\r
+                  <cbc:ID>1</cbc:ID>\r
+                  <cbc:InvoicedQuantity unitCode="NAR" unitCodeListID="UNECERec20">1.00</cbc:InvoicedQuantity>\r
+                  <cbc:LineExtensionAmount currencyID="EUR">100.00</cbc:LineExtensionAmount>\r
+                  <cac:TaxTotal>\r
+                     <cbc:TaxAmount currencyID="EUR">21.00</cbc:TaxAmount>\r
+                  </cac:TaxTotal>\r
+                  <cac:Item>\r
+                     <cbc:Description>Line1 description - may be long</cbc:Description>\r
+                     <cbc:Name>Line1max50char</cbc:Name>\r
+                     <cac:ClassifiedTaxCategory>\r
+                        <cbc:ID schemeID="UNCL5305">S</cbc:ID>\r
+                        <cbc:Percent>21.00</cbc:Percent>\r
+                        <cac:TaxScheme>\r
+                           <cbc:ID>VAT</cbc:ID>\r
+                        </cac:TaxScheme>\r
+                     </cac:ClassifiedTaxCategory>\r
+                  </cac:Item>\r
+                  <cac:Price>\r
+                     <cbc:PriceAmount currencyID="EUR">100.00</cbc:PriceAmount>\r
+                     <cbc:BaseQuantity>1.00</cbc:BaseQuantity>\r
+                  </cac:Price>\r
+               </cac:InvoiceLine>\r
+            </Invoice>\r
+         </v1:document>\r
+      </v1:submitDocument>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="submitDocument"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d4efcafb-658d-42d2-93f6-940a21319b60" name="Invalid soap request"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mocksimplepriorSOAP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:head="http://fsb.belgium.be/header" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">\r
+   <soapenv:Header/>\r
+      <head:fsbHeader>
+         <head:messageId>9397cbe5-174f-479f-941d-2371129acb05</head:messageId>
+      </head:fsbHeader>
+   <soapenv:Body>\r
+      <v1:submitDocument>\r
+         <v1:document>\r
+         
+      </v1:submitDocument>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="submitDocument"/><con:wsrmConfig version="1.2"/></con:call><con:call id="0fb45939-a169-4a65-aa6d-c356f02f79c6" name="Invalid doc. type"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mocksimplepriorSOAP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:head="http://fsb.belgium.be/header" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">\r
+   <soapenv:Header>
+      <head:fsbHeader>
+         <head:messageId>9397cbe5-174f-479f-941d-2371129acb05</head:messageId>
+      </head:fsbHeader>
+   </soapenv:Header>
+   <soapenv:Body>
+      <v1:submitDocument>
+         <v1:document>
+            <Reminder xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Reminder-2 UBL-Reminder-2.0.xsd" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Reminder-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+               <cbc:UBLVersionID>2.0</cbc:UBLVersionID>
+               <cbc:CustomizationID>urn:www.cenbii.eu:transaction:biicoretrdm017:ver1.0:#urn:www.cenbii.eu:profile:biixy:ver1.0#urn:www.difi.no:ehf:purring:ver1</cbc:CustomizationID>
+               <cbc:ProfileID>urn:www.cenbii.eu:profile:biixy:ver1.0</cbc:ProfileID>
+               <cbc:ID>123456</cbc:ID>
+               <cbc:IssueDate>2012-12-03</cbc:IssueDate>
+               <cbc:ReminderTypeCode>999</cbc:ReminderTypeCode>
+               <cbc:ReminderSequenceNumeric>1</cbc:ReminderSequenceNumeric>
+               <cbc:Note languageID="no">Henvendelse angående purring rettes til Utstyr salg AS, tlf 22 05 11 34</cbc:Note>
+               <cac:AccountingSupplierParty>
+                  <cac:Party>
+                     <cbc:EndpointID>9908:123456789</cbc:EndpointID>
+                     <cac:PartyIdentification>
+                        <cbc:ID>Supp123</cbc:ID>
+                     </cac:PartyIdentification>
+                     <cac:PartyName>
+                        <cbc:Name>Sellercompany ASA</cbc:Name>
+                     </cac:PartyName>
+                     <cac:PostalAddress>
+                        <cbc:ID schemeID="GLN" schemeAgencyID="9">1231412341324</cbc:ID>
+                        <cbc:Postbox>5467</cbc:Postbox>
+                        <cbc:StreetName>Main street</cbc:StreetName>
+                        <cbc:BuildingNumber>1</cbc:BuildingNumber>
+                        <cbc:CityName>Big city</cbc:CityName>
+                        <cbc:PostalZone>54321</cbc:PostalZone>
+                        <cbc:CountrySubentityCode>RegionA</cbc:CountrySubentityCode>
+                        <cac:Country>
+                           <cbc:IdentificationCode listID="ISO3166-1" listAgencyID="6">NO</cbc:IdentificationCode>
+                        </cac:Country>
+                     </cac:PostalAddress>
+                     <cac:PartyLegalEntity>
+                        <cbc:RegistrationName>The Sellercompany ASA</cbc:RegistrationName>
+                        <cbc:CompanyID schemeID="NO:ORGNR" schemeName="Foretaksregisteret" schemeAgencyID="82">123456789</cbc:CompanyID>
+                        <cac:RegistrationAddress>
+                           <cbc:CityName>Big city</cbc:CityName>
+                           <cbc:CountrySubentity>RegionA</cbc:CountrySubentity>
+                           <cac:Country>
+                              <cbc:IdentificationCode>NO</cbc:IdentificationCode>
+                           </cac:Country>
+                        </cac:RegistrationAddress>
+                     </cac:PartyLegalEntity>
+                  </cac:Party>
+               </cac:AccountingSupplierParty>
+               <cac:AccountingCustomerParty>
+                  <cac:Party>
+                     <cbc:EndpointID>9908:987654321</cbc:EndpointID>
+                     <cac:PartyIdentification>
+                        <cbc:ID>345KS5324</cbc:ID>
+                     </cac:PartyIdentification>
+                     <cac:PartyName>
+                        <cbc:Name>Buyercompany ASA</cbc:Name>
+                     </cac:PartyName>
+                     <cac:PostalAddress>
+                        <cbc:ID schemeID="GLN" schemeAgencyID="9">1238764941386</cbc:ID>
+                        <cbc:Postbox>123</cbc:Postbox>
+                        <cbc:StreetName>Anystreet</cbc:StreetName>
+                        <cbc:BuildingNumber>8</cbc:BuildingNumber>
+                        <cbc:CityName>Anytown</cbc:CityName>
+                        <cbc:PostalZone>101</cbc:PostalZone>
+                        <cbc:CountrySubentity>RegionB</cbc:CountrySubentity>
+                        <cac:Country>
+                           <cbc:IdentificationCode listID="ISO3166-1" listAgencyID="6">NO</cbc:IdentificationCode>
+                        </cac:Country>
+                     </cac:PostalAddress>
+                     <cac:PartyLegalEntity>
+                        <cbc:RegistrationName>The buyercompany ASA</cbc:RegistrationName>
+                        <cbc:CompanyID schemeAgencyID="NO:ORGNR" schemeID="82">987654321</cbc:CompanyID>
+                        <cac:RegistrationAddress>
+                           <cbc:CityName>Mainplace</cbc:CityName>
+                           <cbc:CountrySubentity>RegionB</cbc:CountrySubentity>
+                           <cac:Country>
+                              <cbc:IdentificationCode>NO</cbc:IdentificationCode>
+                           </cac:Country>
+                        </cac:RegistrationAddress>
+                     </cac:PartyLegalEntity>
+                     <cac:Contact>
+                        <cbc:ID>3150bdn</cbc:ID>
+                        <cbc:Telephone>5121230</cbc:Telephone>
+                        <cbc:Telefax>5121231</cbc:Telefax>
+                        <cbc:ElectronicMail>john@buyercompany.no</cbc:ElectronicMail>
+                     </cac:Contact>
+                  </cac:Party>
+               </cac:AccountingCustomerParty>
+               <cac:PayeeParty>
+                  <cac:PartyIdentification>
+                     <cbc:ID schemeID="GLN" schemeAgencyID="9">098740918237</cbc:ID>
+                  </cac:PartyIdentification>
+                  <cac:PartyName>
+                     <cbc:Name>Ebeneser Scrooge AS</cbc:Name>
+                  </cac:PartyName>
+               </cac:PayeeParty>
+               <cac:TaxTotal>
+                  <cbc:TaxAmount currencyID="NOK">12.50</cbc:TaxAmount>
+                  <cac:TaxSubtotal>
+                     <cbc:TaxableAmount currencyID="NOK">50.00</cbc:TaxableAmount>
+                     <cbc:TaxAmount currencyID="NOK">12.50</cbc:TaxAmount>
+                     <cac:TaxCategory>
+                        <cbc:ID schemeID="UN/ECE 5305" schemeAgencyID="6">S</cbc:ID>
+                        <cac:TaxScheme>
+                           <cbc:ID schemeID="UN/ECE 5153" schemeAgencyID="6">VAT</cbc:ID>
+                        </cac:TaxScheme>
+                     </cac:TaxCategory>
+                  </cac:TaxSubtotal>
+               </cac:TaxTotal>
+               <cac:LegalMonetaryTotal>
+                  <cbc:LineExtensionAmount currencyID="NOK">50.00</cbc:LineExtensionAmount>
+                  <cbc:PayableAmount currencyID="NOK">62.50</cbc:PayableAmount>
+               </cac:LegalMonetaryTotal>
+               <cac:ReminderLine>
+                  <cbc:ID>1</cbc:ID>
+                  <cbc:Note>Gjelder faktura 123456</cbc:Note>
+                  <cbc:DebitLineAmount currencyID="NOK">100</cbc:DebitLineAmount>
+                  <cac:BillingReference>
+                     <cac:InvoiceDocumentReference>
+                        <cbc:ID>123456</cbc:ID>
+                     </cac:InvoiceDocumentReference>
+                  </cac:BillingReference>
+               </cac:ReminderLine>
+               <cac:ReminderLine>
+                  <cbc:ID>2</cbc:ID>
+                  <cbc:Note>Gjelder kreditnota 54321</cbc:Note>
+                  <cbc:CreditLineAmount currencyID="NOK">50</cbc:CreditLineAmount>
+                  <cac:BillingReference>
+                     <cac:CreditNoteDocumentReference>
+                        <cbc:ID>54321</cbc:ID>
+                     </cac:CreditNoteDocumentReference>
+                  </cac:BillingReference>
+               </cac:ReminderLine>
+            </Reminder>
+         </v1:document>
+      </v1:submitDocument>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="submitDocument"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="78d37d87-d431-4a64-9c54-fe0cc9704e39" isOneWay="false" action="submitInboxRequest" name="submitInboxRequest" bindingOperationName="submitInboxRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cec5fe72-e992-4ffa-8866-71f2e7f1310f" name="Fakecustomer"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mocksimplepriorSOAP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:head="http://fsb.belgium.be/header" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">\r
+   <soapenv:Header>
+      <head:fsbHeader>
+         <head:messageId>9397cbe5-174f-479f-941d-2371129acb05</head:messageId>
+      </head:fsbHeader>
+   </soapenv:Header>
+   <soapenv:Body>\r
+      <v1:submitInboxRequest>\r
+         <v1:receiverId>2222222222</v1:receiverId>
+         <v1:senderId>0200013901</v1:senderId>
+      </v1:submitInboxRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="submitInboxRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService id="24e53d60-6309-44f7-884e-7b17c255591b" port="8088" path="/mocksimplepriorSOAP" host="dwsoft2016" name="simplepriorSOAP MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting><con:setting id="com.eviware.soapui.impl.wsdl.panels.mock.WsdlMockServiceDesktopPanel$LogListModel@maxSize">100</con:setting></con:settings><con:properties/><con:mockOperation name="markDocument" id="960f789d-a95e-416e-b2e9-6d21aa143885" interface="simplepriorSOAP" operation="markDocument"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response Invoice BIS 5A" id="3152ddd9-8299-4c17-a184-c0ea6071dbdf" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:markDocumentResponse>
+         <v1:ackIndicator>true</v1:ackIndicator>
+      </v1:markDocumentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="markDocument"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="retrieveDocument" id="d01e9862-ca77-4db1-8abc-abccacda7a5d" interface="simplepriorSOAP" operation="retrieveDocument"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response Invoice BIS 5A" id="047f08dc-fe5e-4b0a-8d0f-518bfc7e5485" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:retrieveDocumentResponse>
+         <receivedDate>2018-06-22</receivedDate>
+         <document>
+            <Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+               <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+               <cbc:CustomizationID>urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol5a:ver2.0</cbc:CustomizationID>
+               <cbc:ProfileID>urn:www.cenbii.eu:profile:bii05:ver2.0</cbc:ProfileID>
+               <cbc:ID>118120479086FAKSEP-4-5A</cbc:ID>
+               <cbc:IssueDate>2018-06-12</cbc:IssueDate>
+               <cbc:InvoiceTypeCode listID="UNCL1001">380</cbc:InvoiceTypeCode>
+               <cbc:DocumentCurrencyCode listID="ISO4217">EUR</cbc:DocumentCurrencyCode>
+               <cac:AccountingSupplierParty>
+                  <cac:Party>
+                     <cac:PartyIdentification>
+                        <cbc:ID schemeID="BE:CBE">0200013901</cbc:ID>
+                     </cac:PartyIdentification>
+                     <cac:PartyName>
+                        <cbc:Name>ACME</cbc:Name>
+                     </cac:PartyName>
+                     <cac:PostalAddress>
+                        <cbc:StreetName>Simon Bolivarlaan 30/9</cbc:StreetName>
+                        <cbc:CityName>BRUSSEL</cbc:CityName>
+                        <cbc:PostalZone>1000</cbc:PostalZone>
+                        <cac:Country>
+                           <cbc:IdentificationCode listID="ISO3166-1:Alpha2">BE</cbc:IdentificationCode>
+                        </cac:Country>
+                     </cac:PostalAddress>
+                     <cac:PartyTaxScheme>
+                        <cbc:CompanyID schemeID="BE:VAT">BE0200013901</cbc:CompanyID>
+                        <cac:TaxScheme>
+                           <cbc:ID>VAT</cbc:ID>
+                        </cac:TaxScheme>
+                     </cac:PartyTaxScheme>
+                     <cac:PartyLegalEntity>
+                        <cbc:RegistrationName>ACME</cbc:RegistrationName>
+                        <cbc:CompanyID schemeID="BE:CBE">0200013901</cbc:CompanyID>
+                     </cac:PartyLegalEntity>
+                     <cac:Contact>
+                        <cbc:ElectronicMail>somebody@domain.be</cbc:ElectronicMail>
+                     </cac:Contact>
+                  </cac:Party>
+               </cac:AccountingSupplierParty>
+               <cac:AccountingCustomerParty>
+                  <cac:Party>
+                     <cac:PartyIdentification>
+                        <cbc:ID schemeID="BE:CBE">2222222222</cbc:ID>
+                     </cac:PartyIdentification>
+                     <cac:PartyName>
+                        <cbc:Name>Fake customer</cbc:Name>
+                     </cac:PartyName>
+                     <cac:PostalAddress>
+                        <cbc:StreetName>Simon Bolivarlaan 34</cbc:StreetName>
+                        <cbc:CityName>ANTWERPEN</cbc:CityName>
+                        <cbc:PostalZone>2000</cbc:PostalZone>
+                        <cac:Country>
+                           <cbc:IdentificationCode listID="ISO3166-1:Alpha2">BE</cbc:IdentificationCode>
+                        </cac:Country>
+                     </cac:PostalAddress>
+                     <cac:PartyTaxScheme>
+                        <cbc:CompanyID schemeID="BE:VAT">BE2222222222</cbc:CompanyID>
+                        <cac:TaxScheme>
+                           <cbc:ID>VAT</cbc:ID>
+                        </cac:TaxScheme>
+                     </cac:PartyTaxScheme>
+                     <cac:PartyLegalEntity>
+                        <cbc:RegistrationName>Fake Customer</cbc:RegistrationName>
+                        <cbc:CompanyID schemeID="BE:CBE">2222222222</cbc:CompanyID>
+                     </cac:PartyLegalEntity>
+                  </cac:Party>
+               </cac:AccountingCustomerParty>
+               <cac:PaymentMeans>
+                  <cbc:PaymentMeansCode listID="UNCL4461">1</cbc:PaymentMeansCode>
+                  <cbc:PaymentDueDate>2018-05-31</cbc:PaymentDueDate>
+                  <cbc:PaymentChannelCode>IBAN</cbc:PaymentChannelCode>
+                  <cbc:InstructionNote>SIMPLE TEST TO FAKE CUSTOMER</cbc:InstructionNote>
+                  <cac:PayeeFinancialAccount>
+                     <cbc:ID schemeID="IBAN">BE86736009252450</cbc:ID>
+                     <cac:FinancialInstitutionBranch>
+                        <cac:FinancialInstitution>
+                           <cbc:ID schemeID="BIC">KREDBEBB</cbc:ID>
+                        </cac:FinancialInstitution>
+                     </cac:FinancialInstitutionBranch>
+                  </cac:PayeeFinancialAccount>
+               </cac:PaymentMeans>
+               <cac:TaxTotal>
+                  <cbc:TaxAmount currencyID="EUR">21.00</cbc:TaxAmount>
+                  <cac:TaxSubtotal>
+                     <cbc:TaxableAmount currencyID="EUR">100.00</cbc:TaxableAmount>
+                     <cbc:TaxAmount currencyID="EUR">21.00</cbc:TaxAmount>
+                     <cac:TaxCategory>
+                        <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                        <cbc:Percent>21.00</cbc:Percent>
+                        <cac:TaxScheme>
+                           <cbc:ID>VAT</cbc:ID>
+                        </cac:TaxScheme>
+                     </cac:TaxCategory>
+                  </cac:TaxSubtotal>
+               </cac:TaxTotal>
+               <cac:LegalMonetaryTotal>
+                  <cbc:LineExtensionAmount currencyID="EUR">100.00</cbc:LineExtensionAmount>
+                  <cbc:TaxExclusiveAmount currencyID="EUR">100.00</cbc:TaxExclusiveAmount>
+                  <cbc:TaxInclusiveAmount currencyID="EUR">121.00</cbc:TaxInclusiveAmount>
+                  <cbc:PayableAmount currencyID="EUR">121.00</cbc:PayableAmount>
+               </cac:LegalMonetaryTotal>
+               <cac:InvoiceLine>
+                  <cbc:ID>1</cbc:ID>
+                  <cbc:InvoicedQuantity unitCode="NAR" unitCodeListID="UNECERec20">1.00</cbc:InvoicedQuantity>
+                  <cbc:LineExtensionAmount currencyID="EUR">100.00</cbc:LineExtensionAmount>
+                  <cac:TaxTotal>
+                     <cbc:TaxAmount currencyID="EUR">21.00</cbc:TaxAmount>
+                  </cac:TaxTotal>
+                  <cac:Item>
+                     <cbc:Description>Line1 description - may be long</cbc:Description>
+                     <cbc:Name>Line1max50char</cbc:Name>
+                     <cac:ClassifiedTaxCategory>
+                        <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                        <cbc:Percent>21.00</cbc:Percent>
+                        <cac:TaxScheme>
+                           <cbc:ID>VAT</cbc:ID>
+                        </cac:TaxScheme>
+                     </cac:ClassifiedTaxCategory>
+                  </cac:Item>
+                  <cac:Price>
+                     <cbc:PriceAmount currencyID="EUR">100.00</cbc:PriceAmount>
+                     <cbc:BaseQuantity>1.00</cbc:BaseQuantity>
+                  </cac:Price>
+               </cac:InvoiceLine>
+            </Invoice>
+         </document>
+      </v1:retrieveDocumentResponse>
+
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="retrieveDocument"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="submitDocument" id="e20dd993-9287-4e79-a7e3-3ce5b438b0a3" interface="simplepriorSOAP" operation="submitDocument"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>QUERY_MATCH</con:dispatchStyle><con:response name="Response Invoice BIS 5A OK" id="3a644939-4124-4d0d-90c5-3efe7547d6a7" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:submitDocumentResponse>
+         <v1:ackIndicator>true</v1:ackIndicator>
+      </v1:submitDocumentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="submitDocument"/></con:response><con:response name="Soapfault - Invalid document" id="b4236ddd-2beb-49a4-be0b-9cf2017e9dd4" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:submitDocumentResponse>
+         <faultcode>soap:Client</faultcode>
+         <faultstring>Undefined incoming message: Invalid UBL document received:UBLVersionID is missing</faultstring>
+      </v1:submitDocumentResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="submitDocument"/></con:response><con:response name="Invalid soap request response" id="138a589c-4983-4528-92c0-4a827dd0b299" httpResponseStatus="500" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">
+   <soapenv:Header/>
+  <soapenv:Body>
+      <soapenv:Fault>
+         <faultcode>soapenv:Server</faultcode>
+         <faultstring>OSB-382000: javax.xml.soap.SOAPException: com.ctc.wstx.exc.WstxParsingException: Unexpected close tag &lt;/v1:submitDocument>; expected &lt;/v1:document>.
+ at [row,col {unknown-source}]: [12,25]</faultstring>
+         <detail>
+            <con:stack-trace xmlns:con="http://www.bea.com/wli/sb/context"><![CDATA[com.bea.wli.sb.service.handlerchain.HandlerException: javax.xml.soap.SOAPException: com.ctc.wstx.exc.WstxParsingException: Unexpected close tag </v1:submitDocument>; expected </v1:document>.
+ at [row,col {unknown-source}]: [12,25]
+	at com.bea.wli.sb.service.disi.handlerchain.handlers.InboundDISIHandler.dispatch(InboundDISIHandler.java:142)
+	at com.bea.wli.sb.service.handlerchain.handlers.AbstractHandler.dispatch(AbstractHandler.java:129)
+	at com.bea.wli.sb.service.disi.handlerchain.handlers.InboundWssPhase1DISIHandler.dispatch(InboundWssPhase1DISIHandler.java:100)
+	at com.bea.wli.sb.service.handlerchain.handlers.AbstractHandler.dispatch(AbstractHandler.java:129)
+	at com.bea.wli.sb.service.handlerchain.handlers.InboundMessageContentHandler.dispatch(InboundMessageContentHandler.java:170)
+	at com.bea.wli.sb.service.handlerchain.handlers.AbstractHandler.dispatch(AbstractHandler.java:129)
+	at com.bea.wli.sb.service.handlerchain.handlers.CheckAccessControl.dispatch(CheckAccessControl.java:73)
+	at com.bea.wli.sb.service.handlerchain.handlers.AbstractHandler.dispatch(AbstractHandler.java:129)
+	at com.bea.wli.sb.service.handlerchain.handlers.UpdateInboundTransportStatistics.dispatch(UpdateInboundTransportStatistics.java:64)
+	at com.bea.wli.sb.service.handlerchain.handlers.AbstractHandler.dispatch(AbstractHandler.java:129)
+	at com.bea.wli.sb.service.handlerchain.handlers.AbstractHandler.dispatch(AbstractHandler.java:129)
+	at com.bea.wli.sb.service.handlerchain.handlers.DefaultInboundErrorHandler.dispatch(DefaultInboundErrorHandler.java:44)
+	at com.bea.wli.sb.service.handlerchain.DefaultInboundHandlerChain.dispatch(DefaultInboundHandlerChain.java:135)
+	at com.bea.wli.sb.transports.TransportDispatcherClient.dispatch(TransportDispatcherClient.java:96)
+	at com.bea.wli.sb.transports.TransportManagerImpl.receiveMessage(TransportManagerImpl.java:330)
+	at com.bea.wli.sb.transports.http.generic.RequestHelperBase.invokePipeline(RequestHelperBase.java:237)
+	at com.bea.wli.sb.transports.http.wls.HttpTransportServlet$RequestHelperWLS.invokePipeline(HttpTransportServlet.java:228)
+	at com.bea.wli.sb.transports.http.generic.RequestHelperBase$1.run(RequestHelperBase.java:204)
+	at com.bea.wli.sb.transports.http.generic.RequestHelperBase$1.run(RequestHelperBase.java:200)
+	at weblogic.security.acl.internal.AuthenticatedSubject.doAs(AuthenticatedSubject.java:368)
+	at weblogic.security.service.SecurityManager.runAs(SecurityManager.java:163)
+	at com.bea.wli.sb.util.security.SecurityUtils.executeAs(SecurityUtils.java:102)
+	at com.bea.wli.sb.transports.http.generic.RequestHelperBase.securedInvoke(RequestHelperBase.java:198)
+	at com.bea.wli.sb.transports.http.generic.RequestHelperBase.service(RequestHelperBase.java:135)
+	at com.bea.wli.sb.transports.http.wls.HttpTransportServlet.service(HttpTransportServlet.java:129)
+	at weblogic.servlet.FutureResponseServlet.service(FutureResponseServlet.java:24)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at weblogic.servlet.internal.StubSecurityHelper$ServletServiceAction.run(StubSecurityHelper.java:286)
+	at weblogic.servlet.internal.StubSecurityHelper$ServletServiceAction.run(StubSecurityHelper.java:260)
+	at weblogic.servlet.internal.StubSecurityHelper.invokeServlet(StubSecurityHelper.java:137)
+	at weblogic.servlet.internal.ServletStubImpl.execute(ServletStubImpl.java:350)
+	at weblogic.servlet.internal.TailFilter.doFilter(TailFilter.java:25)
+	at weblogic.servlet.internal.FilterChainImpl.doFilter(FilterChainImpl.java:78)
+	at oracle.dms.servlet.DMSServletFilter.doFilter(DMSServletFilter.java:248)
+	at weblogic.servlet.internal.FilterChainImpl.doFilter(FilterChainImpl.java:78)
+	at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.wrapRun(WebAppServletContext.java:3683)
+	at weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3649)
+	at weblogic.security.acl.internal.AuthenticatedSubject.doAs(AuthenticatedSubject.java:326)
+	at weblogic.security.service.SecurityManager.runAsForUserCode(SecurityManager.java:197)
+	at weblogic.servlet.provider.WlsSecurityProvider.runAsForUserCode(WlsSecurityProvider.java:203)
+	at weblogic.servlet.provider.WlsSubjectHandle.run(WlsSubjectHandle.java:71)
+	at weblogic.servlet.internal.WebAppServletContext.doSecuredExecute(WebAppServletContext.java:2433)
+	at weblogic.servlet.internal.WebAppServletContext.securedExecute(WebAppServletContext.java:2281)
+	at weblogic.servlet.internal.WebAppServletContext.execute(WebAppServletContext.java:2259)
+	at weblogic.servlet.internal.ServletRequestImpl.runInternal(ServletRequestImpl.java:1692)
+	at weblogic.servlet.internal.ServletRequestImpl.run(ServletRequestImpl.java:1652)
+	at weblogic.servlet.provider.ContainerSupportProviderImpl$WlsRequestExecutor.run(ContainerSupportProviderImpl.java:272)
+	at weblogic.invocation.ComponentInvocationContextManager._runAs(ComponentInvocationContextManager.java:348)
+	at weblogic.invocation.ComponentInvocationContextManager.runAs(ComponentInvocationContextManager.java:333)
+	at weblogic.work.LivePartitionUtility.doRunWorkUnderContext(LivePartitionUtility.java:54)
+	at weblogic.work.PartitionUtility.runWorkUnderContext(PartitionUtility.java:41)
+	at weblogic.work.SelfTuningWorkManagerImpl.runWorkUnderContext(SelfTuningWorkManagerImpl.java:640)
+	at weblogic.work.ExecuteThread.execute(ExecuteThread.java:406)
+	at weblogic.work.ExecuteThread.run(ExecuteThread.java:346)
+Caused by: javax.xml.ws.WebServiceException: javax.xml.soap.SOAPException: com.ctc.wstx.exc.WstxParsingException: Unexpected close tag </v1:submitDocument>; expected </v1:document>.
+ at [row,col {unknown-source}]: [12,25]
+	at oracle.j2ee.ws.common.wsm.SecurityAgentTube.processRequest(SecurityAgentTube.java:208)
+	at com.sun.xml.ws.api.pipe.Fiber.__doRun(Fiber.java:1136)
+	at com.sun.xml.ws.api.pipe.Fiber.access$100(Fiber.java:127)
+	at com.sun.xml.ws.api.pipe.Fiber$InterceptorHandler.execute(Fiber.java:965)
+	at com.sun.xml.ws.api.pipe.Fiber$InterceptorHandler.execute(Fiber.java:939)
+	at com.oracle.webservices.impl.disi.service.ServiceRequestTransportProcessor$Receiver$2.execute(ServiceRequestTransportProcessor.java:106)
+	at com.sun.xml.ws.api.pipe.Fiber$InterceptorHandler.execute(Fiber.java:969)
+	at com.sun.xml.ws.api.pipe.Fiber$InterceptorHandler.invoke(Fiber.java:958)
+	at com.sun.xml.ws.api.pipe.Fiber._doRun(Fiber.java:1054)
+	at com.sun.xml.ws.api.pipe.Fiber.doRun(Fiber.java:1019)
+	at com.sun.xml.ws.api.pipe.Fiber.run(Fiber.java:813)
+	at com.sun.xml.ws.api.server.ThreadLocalContainerResolver$2$1.run(ThreadLocalContainerResolver.java:112)
+	at com.oracle.webservices.impl.disi.service.DISIEndpointImpl$1.execute(DISIEndpointImpl.java:141)
+	at com.sun.xml.ws.api.server.ThreadLocalContainerResolver$2.execute(ThreadLocalContainerResolver.java:107)
+	at com.sun.xml.ws.api.pipe.Engine.addRunnable(Engine.java:96)
+	at com.sun.xml.ws.api.pipe.Fiber.start(Fiber.java:424)
+	at com.sun.xml.ws.server.WSEndpointImpl.processAsync(WSEndpointImpl.java:368)
+	at com.sun.xml.ws.server.WSEndpointImpl.schedule(WSEndpointImpl.java:322)
+	at com.sun.xml.ws.metro.api.config.management.ManagedEndpoint.schedule(ManagedEndpoint.java:230)
+	at com.oracle.webservices.impl.disi.service.ServiceRequestTransportProcessor$Receiver.run(ServiceRequestTransportProcessor.java:92)
+	at com.oracle.webservices.impl.disi.service.ServiceRequestTransportProcessor.request(ServiceRequestTransportProcessor.java:53)
+	at com.oracle.webservices.impl.disi.service.DISIAdapter$DISIToolkit.invoke(DISIAdapter.java:315)
+	at com.oracle.webservices.impl.disi.service.DISIAdapter$2.request(DISIAdapter.java:142)
+	at com.oracle.webservices.impl.disi.service.DISIAdapter$2.request(DISIAdapter.java:105)
+	at com.bea.wli.sb.service.disi.handlerchain.handlers.InboundDISIHandler$1.run(InboundDISIHandler.java:113)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at oracle.security.jps.util.JpsSubject.doAs(JpsSubject.java:208)
+	at com.bea.wli.sb.service.disi.handlerchain.handlers.InboundDISIHandler.dispatch(InboundDISIHandler.java:110)
+	... 53 more
+Caused by: javax.xml.soap.SOAPException: com.ctc.wstx.exc.WstxParsingException: Unexpected close tag </v1:submitDocument>; expected </v1:document>.
+ at [row,col {unknown-source}]: [12,25]
+	at oracle.j2ee.ws.common.disi.JRFSAAJFactory.readAsSAAJ(JRFSAAJFactory.java:126)
+	at com.sun.xml.ws.api.message.saaj.SAAJFactory.read(SAAJFactory.java:208)
+	at com.sun.xml.ws.message.AbstractMessageImpl.toSAAJ(AbstractMessageImpl.java:236)
+	at com.sun.xml.ws.api.message.MessageWrapper.readAsSOAPMessage(MessageWrapper.java:184)
+	at com.sun.xml.ws.api.message.Packet.getAsSOAPMessage(Packet.java:1261)
+	at com.sun.xml.ws.api.message.Packet.getSOAPMessage(Packet.java:1250)
+	at oracle.j2ee.ws.common.wsm.SecurityAgentTube.processRequest(SecurityAgentTube.java:205)
+	... 80 more
+Caused by: com.ctc.wstx.exc.WstxParsingException: Unexpected close tag </v1:submitDocument>; expected </v1:document>.
+ at [row,col {unknown-source}]: [12,25]
+	at com.ctc.wstx.sr.StreamScanner.constructWfcException(StreamScanner.java:606)
+	at com.ctc.wstx.sr.StreamScanner.throwParseError(StreamScanner.java:479)
+	at com.ctc.wstx.sr.StreamScanner.throwParseError(StreamScanner.java:464)
+	at com.ctc.wstx.sr.BasicStreamReader.reportWrongEndElem(BasicStreamReader.java:3283)
+	at com.ctc.wstx.sr.BasicStreamReader.readEndElem(BasicStreamReader.java:3210)
+	at com.ctc.wstx.sr.BasicStreamReader.nextFromTree(BasicStreamReader.java:2829)
+	at com.ctc.wstx.sr.BasicStreamReader.next(BasicStreamReader.java:1072)
+	at com.sun.xml.ws.util.xml.XMLStreamReaderFilter.next(XMLStreamReaderFilter.java:96)
+	at org.jvnet.staxex.util.XMLStreamReaderToXMLStreamWriter.getNextEvent(XMLStreamReaderToXMLStreamWriter.java:309)
+	at org.jvnet.staxex.util.XMLStreamReaderToXMLStreamWriter.bridge(XMLStreamReaderToXMLStreamWriter.java:171)
+	at org.jvnet.staxex.util.XMLStreamReaderToXMLStreamWriter.bridge(XMLStreamReaderToXMLStreamWriter.java:99)
+	at com.sun.xml.ws.message.stream.StreamMessage.writePayloadTo(StreamMessage.java:416)
+	at com.sun.xml.ws.message.stream.StreamMessage.writeEnvelope(StreamMessage.java:462)
+	at com.sun.xml.ws.message.stream.StreamMessage.writeTo(StreamMessage.java:431)
+	at com.sun.xml.ws.api.message.MessageWrapper.writeTo(MessageWrapper.java:226)
+	at oracle.j2ee.ws.common.disi.JRFSAAJFactory.readAsSAAJ(JRFSAAJFactory.java:104)
+	... 86 more]]]]>><![CDATA[</con:stack-trace>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="submitDocument"/></con:response><con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:query><con:name>ReminderCode999</con:name><con:query>//*:ReminderTypeCode</con:query><con:match>999</con:match><con:response>Soapfault - Invalid document</con:response></con:query><con:query><con:name>ReminderCode888</con:name><con:query>//*:ReminderTypeCode</con:query><con:match>888</con:match><con:response>Response Invoice BIS 5A OK</con:response></con:query><con:query><con:name>ok</con:name><con:query>//*:ID</con:query><con:match>118120479086FAKSEP-4-5A</con:match><con:response>Response Invoice BIS 5A OK</con:response></con:query></con:dispatchConfig></con:mockOperation><con:mockOperation name="submitInboxRequest" id="0e977006-a1b7-4f7c-aa80-089535744c91" interface="simplepriorSOAP" operation="submitInboxRequest"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response Fakecustomer List OK" id="58d2dbf1-e67f-435b-85cc-63ef61fbdbe6" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:submitInboxRequestResponse>
+         <v1:documentGroup>
+            <!--Zero or more repetitions:-->
+            <documentReference>
+               <receiverId>2222222222</receiverId>
+               <senderId>0200013901</senderId>
+               <documentType>380</documentType>
+               <documentId>e878b54b-8a82-4bf3-8c8c-37eacdab2589</documentId>
+            </documentReference>
+         </v1:documentGroup>
+      </v1:submitInboxRequestResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="submitInboxRequest"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

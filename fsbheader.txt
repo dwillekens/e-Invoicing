@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="qualified" targetNamespace="http://fsb.belgium.be/header" xmlns:tns="http://fsb.belgium.be/header" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:annotation>
+<xs:documentation> The FSB header is responsible for passing metadata regarding a partner service call made to FedIct. Content of this header exists out of the following information: - messageId - correlationId - processInstanceId - fsbTransactionId This information provides FedIct and partners with a identification of all message related to service calls. For maintainability this information can be logged in case of tracing issues. The information is first priority relavant between partner exchanging information through the service calls. Two distinct types for the request and response are created, as information by the service caller and receiver. </xs:documentation>
+</xs:annotation>
+<xs:element type="tns:FsbHeaderType" name="fsbHeader"/>
+<xs:simpleType name="UUIDType">
+<xs:annotation>
+<xs:documentation> see: http://standards.ieee.org/downloads/1671/1671-2010/Common.xsd </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string"> </xs:restriction>
+</xs:simpleType>
+<xs:complexType name="FsbHeaderType">
+<xs:annotation>
+<xs:documentation> The FSB header for service call request holds metadata regarding a partner service call made to FedIct. Content of this header exists out of the following information: - messageId - correlationId - processInstanceId - fsbTransactionId This gives the service caller the means to provide the metadata to FSB with identifications regarding the call. For maintainability this information can be logged (audit trail) in case of tracing issues. </xs:documentation>
+</xs:annotation>
+<xs:sequence maxOccurs="1">
+<xs:element type="tns:UUIDType" name="messageId">
+<xs:annotation>
+<xs:documentation> The unique message identification set by the caller. This identification is unique within FSB and should be a generated UUID. </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:UUIDType" name="correlationId" maxOccurs="2" minOccurs="0">
+<xs:annotation>
+<xs:documentation> Optional - holds an identification of an asynchronous response call. This field is immutable within FSB and represents the messageId. </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:UUIDType" name="processInstanceId" maxOccurs="1" minOccurs="0">
+<xs:annotation>
+<xs:documentation> Optional - an identification to which process this call belongs, as by meaning to group possible calls by process. </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element type="tns:UUIDType" name="fsbTransactionId" maxOccurs="1" minOccurs="0">
+<xs:annotation>
+<xs:documentation> Optional - identification of the FSB transaction. </xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

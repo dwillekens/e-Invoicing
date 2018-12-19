@@ -1,0 +1,139 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:head="http://fsb.belgium.be/header" xmlns:v1="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">
+   <soapenv:Header/>
+      <head:fsbHeader>
+         <head:messageId>9397cbe5-174f-479f-941d-2371129acb05</head:messageId>
+      </head:fsbHeader>
+   <soapenv:Body>
+      <v1:submitDocument>
+         <v1:document>
+            <Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+                    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+                    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">
+               <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+               <cbc:CustomizationID>urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol5a:ver2.0</cbc:CustomizationID>
+               <cbc:ProfileID>urn:www.cenbii.eu:profile:bii05:ver2.0</cbc:ProfileID>
+               <cbc:ID>118120479086FAKSEP-4-5A</cbc:ID>
+               <cbc:IssueDate>2018-06-12</cbc:IssueDate>
+               <cbc:InvoiceTypeCode listID="UNCL1001">380</cbc:InvoiceTypeCode>
+               <cbc:DocumentCurrencyCode listID="ISO4217">EUR</cbc:DocumentCurrencyCode>
+               <cac:AccountingSupplierParty>
+                  <cac:Party>
+                     <cac:PartyIdentification>
+                        <cbc:ID schemeID="BE:CBE">0200013901</cbc:ID>
+                     </cac:PartyIdentification>
+                     <cac:PartyName>
+                        <cbc:Name>ACME</cbc:Name>
+                     </cac:PartyName>
+                     <cac:PostalAddress>
+                        <cbc:StreetName>Simon Bolivarlaan 30/9</cbc:StreetName>
+                        <cbc:CityName>BRUSSEL</cbc:CityName>
+                        <cbc:PostalZone>1000</cbc:PostalZone>
+                        <cac:Country>
+                           <cbc:IdentificationCode listID="ISO3166-1:Alpha2">BE</cbc:IdentificationCode>
+                        </cac:Country>
+                     </cac:PostalAddress>
+                     <cac:PartyTaxScheme>
+                        <cbc:CompanyID schemeID="BE:VAT">BE0200013901</cbc:CompanyID>
+                        <cac:TaxScheme>
+                           <cbc:ID>VAT</cbc:ID>
+                        </cac:TaxScheme>
+                     </cac:PartyTaxScheme>
+                     <cac:PartyLegalEntity>
+                        <cbc:RegistrationName>D.W. Soft bvba</cbc:RegistrationName>
+                        <cbc:CompanyID schemeID="BE:CBE">0200013901</cbc:CompanyID>
+                     </cac:PartyLegalEntity>
+                     <cac:Contact>
+                        <cbc:ElectronicMail>dirk.willekens@dwsoft.be</cbc:ElectronicMail>
+                     </cac:Contact>
+                  </cac:Party>
+               </cac:AccountingSupplierParty>
+               <cac:AccountingCustomerParty>
+                  <cac:Party>
+                     <cac:PartyIdentification>
+                        <cbc:ID schemeID="BE:CBE">2222222222</cbc:ID>
+                     </cac:PartyIdentification>
+                     <cac:PartyName>
+                        <cbc:Name>Fake customer</cbc:Name>
+                     </cac:PartyName>
+                     <cac:PostalAddress>
+                        <cbc:StreetName>Simon Bolivarlaan 34</cbc:StreetName>
+                        <cbc:CityName>ANTWERPEN</cbc:CityName>
+                        <cbc:PostalZone>2000</cbc:PostalZone>
+                        <cac:Country>
+                           <cbc:IdentificationCode listID="ISO3166-1:Alpha2">BE</cbc:IdentificationCode>
+                        </cac:Country>
+                     </cac:PostalAddress>
+                     <cac:PartyTaxScheme>
+                        <cbc:CompanyID schemeID="BE:VAT">BE2222222222</cbc:CompanyID>
+                        <cac:TaxScheme>
+                           <cbc:ID>VAT</cbc:ID>
+                        </cac:TaxScheme>
+                     </cac:PartyTaxScheme>
+                     <cac:PartyLegalEntity>
+                        <cbc:RegistrationName>Fake Customer</cbc:RegistrationName>
+                        <cbc:CompanyID schemeID="BE:CBE">2222222222</cbc:CompanyID>
+                     </cac:PartyLegalEntity>
+                  </cac:Party>
+               </cac:AccountingCustomerParty>
+               <cac:PaymentMeans>
+                  <cbc:PaymentMeansCode listID="UNCL4461">1</cbc:PaymentMeansCode>
+                  <cbc:PaymentDueDate>2018-05-31</cbc:PaymentDueDate>
+                  <cbc:PaymentChannelCode>IBAN</cbc:PaymentChannelCode>
+                  <cbc:InstructionNote>SIMPLE TEST TO FAKE CUSTOMER</cbc:InstructionNote>
+                  <cac:PayeeFinancialAccount>
+                     <cbc:ID schemeID="IBAN">BE86736009252450</cbc:ID>
+                     <cac:FinancialInstitutionBranch>
+                        <cac:FinancialInstitution>
+                           <cbc:ID schemeID="BIC">KREDBEBB</cbc:ID>
+                        </cac:FinancialInstitution>
+                     </cac:FinancialInstitutionBranch>
+                  </cac:PayeeFinancialAccount>
+               </cac:PaymentMeans>
+               <cac:TaxTotal>
+                  <cbc:TaxAmount currencyID="EUR">21.00</cbc:TaxAmount>
+                  <cac:TaxSubtotal>
+                     <cbc:TaxableAmount currencyID="EUR">100.00</cbc:TaxableAmount>
+                     <cbc:TaxAmount currencyID="EUR">21.00</cbc:TaxAmount>
+                     <cac:TaxCategory>
+                        <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                        <cbc:Percent>21.00</cbc:Percent>
+                        <cac:TaxScheme>
+                           <cbc:ID>VAT</cbc:ID>
+                        </cac:TaxScheme>
+                     </cac:TaxCategory>
+                  </cac:TaxSubtotal>
+               </cac:TaxTotal>
+               <cac:LegalMonetaryTotal>
+                  <cbc:LineExtensionAmount currencyID="EUR">100.00</cbc:LineExtensionAmount>
+                  <cbc:TaxExclusiveAmount currencyID="EUR">100.00</cbc:TaxExclusiveAmount>
+                  <cbc:TaxInclusiveAmount currencyID="EUR">121.00</cbc:TaxInclusiveAmount>
+                  <cbc:PayableAmount currencyID="EUR">121.00</cbc:PayableAmount>
+               </cac:LegalMonetaryTotal>
+               <cac:InvoiceLine>
+                  <cbc:ID>1</cbc:ID>
+                  <cbc:InvoicedQuantity unitCode="NAR" unitCodeListID="UNECERec20">1.00</cbc:InvoicedQuantity>
+                  <cbc:LineExtensionAmount currencyID="EUR">100.00</cbc:LineExtensionAmount>
+                  <cac:TaxTotal>
+                     <cbc:TaxAmount currencyID="EUR">21.00</cbc:TaxAmount>
+                  </cac:TaxTotal>
+                  <cac:Item>
+                     <cbc:Description>Line1 description - may be long</cbc:Description>
+                     <cbc:Name>Line1max50char</cbc:Name>
+                     <cac:ClassifiedTaxCategory>
+                        <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                        <cbc:Percent>21.00</cbc:Percent>
+                        <cac:TaxScheme>
+                           <cbc:ID>VAT</cbc:ID>
+                        </cac:TaxScheme>
+                     </cac:ClassifiedTaxCategory>
+                  </cac:Item>
+                  <cac:Price>
+                     <cbc:PriceAmount currencyID="EUR">100.00</cbc:PriceAmount>
+                     <cbc:BaseQuantity>1.00</cbc:BaseQuantity>
+                  </cac:Price>
+               </cac:InvoiceLine>
+            </Invoice>
+         </v1:document>
+      </v1:submitDocument>
+   </soapenv:Body>
+</soapenv:Envelope>

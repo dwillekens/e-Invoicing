@@ -1,0 +1,299 @@
+<WL5G3N2:definitions xmlns:WL5G3N0="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:WL5G3N1="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N3="http://fsb.belgium.be/einvoicing/simpleprior/v1_00" xmlns:WL5G3N4="http://fsb.belgium.be/header" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://fsb.belgium.be/einvoicing/simpleprior/v1_00" name="simpleprior">
+<WL5G3N0:Policy WL5G3N1:Id="simplepriorSOAPQSPort_Fault_Policy">
+<sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"/>
+<sp:SignedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"/>
+<sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"/>
+<sp:EncryptedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"/>
+</WL5G3N0:Policy>
+<WL5G3N0:Policy WL5G3N1:Id="simplepriorSOAPQSPort_Input_Policy">
+<sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<sp:Body/>
+</sp:SignedParts>
+<sp:SignedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"/>
+<sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"/>
+<sp:EncryptedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"/>
+</WL5G3N0:Policy>
+<WL5G3N0:Policy WL5G3N1:Id="wss10_proxy_sign_req_resp_body_bst_tstamp_policy">
+<sp:AsymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+<sp:InitiatorToken>
+<wsp:Policy>
+<sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+<wsp:Policy>
+<sp:WssX509V3Token10/>
+</wsp:Policy>
+</sp:X509Token>
+</wsp:Policy>
+</sp:InitiatorToken>
+<sp:RecipientToken>
+<wsp:Policy>
+<sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+<wsp:Policy>
+<sp:WssX509V3Token10/>
+</wsp:Policy>
+</sp:X509Token>
+</wsp:Policy>
+</sp:RecipientToken>
+<sp:AlgorithmSuite>
+<wsp:Policy>
+<sp:Basic256/>
+</wsp:Policy>
+</sp:AlgorithmSuite>
+<sp:Layout>
+<wsp:Policy>
+<sp:Lax/>
+</wsp:Policy>
+</sp:Layout>
+<sp:IncludeTimestamp/>
+<sp:OnlySignEntireHeadersAndBody/>
+</wsp:Policy>
+</sp:AsymmetricBinding>
+<sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+<sp:MustSupportRefKeyIdentifier/>
+<sp:MustSupportRefIssuerSerial/>
+</wsp:Policy>
+</sp:Wss10>
+</WL5G3N0:Policy>
+<WL5G3N0:Policy WL5G3N1:Id="simplepriorSOAPQSPort_Output_Policy">
+<sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+<sp:Body/>
+</sp:SignedParts>
+<sp:SignedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"/>
+<sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"/>
+<sp:EncryptedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"/>
+</WL5G3N0:Policy>
+    <WL5G3N2:types>
+        <xsd:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://fsb.belgium.be/header" xmlns:WL5G3N2="http://fsb.belgium.be/einvoicing/simpleprior/v1_00" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:agg="urn:oasis:natns:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:fsb="http://fsb.belgium.be/header" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://fsb.belgium.be/einvoicing/simpleprior/v1_00" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://fsb.belgium.be/header" schemaLocation="https://fsb.services.int.belgium.be/eProcurementServices/PTS_MercuriusService?SCHEMA%2FUtilityServices%2FCommons%2F1.0%2FXML+Schema%2Fv1_00%2FFsbHeader"/>
+        </xsd:schema>
+        <xsd:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://fsb.belgium.be/header" xmlns:WL5G3N2="http://fsb.belgium.be/einvoicing/simpleprior/v1_00" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:agg="urn:oasis:natns:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:fsb="http://fsb.belgium.be/header" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://fsb.belgium.be/einvoicing/simpleprior/v1_00" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://fsb.belgium.be/einvoicing/simpleprior/v1_00">
+            <xsd:element name="consumerId">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:normalizedString"/>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="submitDocument">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="document" type="tns:UBLDocumentType"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="submitDocumentResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ackIndicator" type="xsd:boolean"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="retrieveDocument">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="receiverId" type="xsd:normalizedString"/>
+                        <xsd:element name="senderId" type="xsd:normalizedString"/>
+                        <xsd:element name="documentType" type="xsd:normalizedString"/>
+                        <xsd:element name="documentId" type="xsd:normalizedString"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="retrieveDocumentResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="receivedDate" type="xsd:date"/>
+                        <xsd:element name="document" type="tns:UBLDocumentType"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="submitInboxRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="receiverId" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="senderId" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="submitInboxRequestResponse" type="tns:SubmitInboxRequestResponseType"/>
+            <xsd:complexType name="UBLDocumentType">
+                <xsd:sequence>
+                    <xsd:any processContents="skip"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="DocumentReferenceType">
+                <xsd:sequence>
+                    <xsd:element name="receiverId" type="xsd:normalizedString"/>
+                    <xsd:element name="senderId" type="xsd:normalizedString"/>
+                    <xsd:element name="documentType" type="xsd:normalizedString"/>
+                    <xsd:element name="documentId" type="xsd:normalizedString"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="SubmitInboxRequestResponseType">
+                <xsd:sequence>
+                    <xsd:element name="documentGroup">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" minOccurs="0" name="documentReference" type="tns:DocumentReferenceType"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="markDocument">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="receiverId" type="xsd:normalizedString"/>
+                        <xsd:element name="senderId" type="xsd:normalizedString"/>
+                        <xsd:element name="documentType" type="xsd:normalizedString"/>
+                        <xsd:element name="documentId" type="xsd:normalizedString"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="markDocumentResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ackIndicator" type="xsd:boolean"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </WL5G3N2:types>
+    <WL5G3N2:message name="submitDocumentRequest">
+        <WL5G3N2:part name="body" element="WL5G3N3:submitDocument"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="submitDocumentResponse">
+        <WL5G3N2:part name="response" element="WL5G3N3:submitDocumentResponse"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="retrieveDocumentRequest">
+        <WL5G3N2:part name="body" element="WL5G3N3:retrieveDocument"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="retrieveDocumentResponse">
+        <WL5G3N2:part name="response" element="WL5G3N3:retrieveDocumentResponse"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="submitInboxRequestRequest">
+        <WL5G3N2:part name="body" element="WL5G3N3:submitInboxRequest"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="submitInboxRequestResponse">
+        <WL5G3N2:part name="response" element="WL5G3N3:submitInboxRequestResponse"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="markDocumentRequest">
+        <WL5G3N2:part name="body" element="WL5G3N3:markDocument"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="markDocumentResponse">
+        <WL5G3N2:part name="response" element="WL5G3N3:markDocumentResponse"/>
+    </WL5G3N2:message>
+    <WL5G3N2:message name="headerRequest">
+        <WL5G3N2:part name="requestHeader" element="WL5G3N4:fsbHeader"/>
+    </WL5G3N2:message>
+    <WL5G3N2:portType name="simpleprior">
+        <WL5G3N2:operation name="submitDocument">
+            <WL5G3N2:input message="WL5G3N3:submitDocumentRequest"/>
+            <WL5G3N2:output message="WL5G3N3:submitDocumentResponse"/>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="retrieveDocument">
+            <WL5G3N2:input message="WL5G3N3:retrieveDocumentRequest"/>
+            <WL5G3N2:output message="WL5G3N3:retrieveDocumentResponse"/>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="submitInboxRequest">
+            <WL5G3N2:input message="WL5G3N3:submitInboxRequestRequest"/>
+            <WL5G3N2:output message="WL5G3N3:submitInboxRequestResponse"/>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="markDocument">
+            <WL5G3N2:input message="WL5G3N3:markDocumentRequest"/>
+            <WL5G3N2:output message="WL5G3N3:markDocumentResponse"/>
+        </WL5G3N2:operation>
+    </WL5G3N2:portType>
+    <WL5G3N2:binding name="simplepriorSOAP" type="WL5G3N3:simpleprior">
+        <WL5G3N5:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<WL5G3N0:Policy>
+<WL5G3N0:PolicyReference URI="#wss10_proxy_sign_req_resp_body_bst_tstamp_policy"/>
+</WL5G3N0:Policy>
+        <WL5G3N2:operation name="submitInboxRequest">
+            <WL5G3N5:operation style="document" soapAction="submitInboxRequest"/>
+            <WL5G3N2:input>
+                <WL5G3N5:body use="literal" parts="body"/>
+                <WL5G3N5:header message="WL5G3N3:headerRequest" part="requestHeader" use="literal"/>
+<WL5G3N0:Policy>
+<WL5G3N0:PolicyReference URI="#simplepriorSOAPQSPort_Input_Policy"/>
+</WL5G3N0:Policy>
+            </WL5G3N2:input>
+            <WL5G3N2:output>
+                <WL5G3N5:body use="literal" parts="response"/>
+<WL5G3N0:Policy>
+<WL5G3N0:PolicyReference URI="#simplepriorSOAPQSPort_Output_Policy"/>
+</WL5G3N0:Policy>
+            </WL5G3N2:output>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="retrieveDocument">
+            <WL5G3N5:operation style="document" soapAction="retrieveDocument"/>
+            <WL5G3N2:input>
+                <WL5G3N5:body use="literal" parts="body"/>
+                <WL5G3N5:header message="WL5G3N3:headerRequest" part="requestHeader" use="literal"/>
+<WL5G3N0:Policy>
+<WL5G3N0:PolicyReference URI="#simplepriorSOAPQSPort_Input_Policy"/>
+</WL5G3N0:Policy>
+            </WL5G3N2:input>
+            <WL5G3N2:output>
+                <WL5G3N5:body use="literal" parts="response"/>
+<WL5G3N0:Policy>
+<WL5G3N0:PolicyReference URI="#simplepriorSOAPQSPort_Output_Policy"/>
+</WL5G3N0:Policy>
+            </WL5G3N2:output>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="submitDocument">
+            <WL5G3N5:operation style="document" soapAction="submitDocument"/>
+            <WL5G3N2:input>
+                <WL5G3N5:body use="literal" parts="body"/>
+                <WL5G3N5:header message="WL5G3N3:headerRequest" part="requestHeader" use="literal"/>
+<WL5G3N0:Policy>
+<WL5G3N0:PolicyReference URI="#simplepriorSOAPQSPort_Input_Policy"/>
+</WL5G3N0:Policy>
+            </WL5G3N2:input>
+            <WL5G3N2:output>
+                <WL5G3N5:body use="literal" parts="response"/>
+<WL5G3N0:Policy>
+<WL5G3N0:PolicyReference URI="#simplepriorSOAPQSPort_Output_Policy"/>
+</WL5G3N0:Policy>
+            </WL5G3N2:output>
+        </WL5G3N2:operation>
+        <WL5G3N2:operation name="markDocument">
+            <WL5G3N5:operation style="document" soapAction="markDocument"/>
+            <WL5G3N2:input>
+                <WL5G3N5:body use="literal" parts="body"/>
+                <WL5G3N5:header message="WL5G3N3:headerRequest" part="requestHeader" use="literal"/>
+<WL5G3N0:Policy>
+<WL5G3N0:PolicyReference URI="#simplepriorSOAPQSPort_Input_Policy"/>
+</WL5G3N0:Policy>
+            </WL5G3N2:input>
+            <WL5G3N2:output>
+                <WL5G3N5:body use="literal" parts="response"/>
+<WL5G3N0:Policy>
+<WL5G3N0:PolicyReference URI="#simplepriorSOAPQSPort_Output_Policy"/>
+</WL5G3N0:Policy>
+            </WL5G3N2:output>
+        </WL5G3N2:operation>
+    </WL5G3N2:binding>
+    <WL5G3N2:service name="simplepriorSOAPQSService">
+        <WL5G3N2:documentation>OSB Service</WL5G3N2:documentation>
+        <WL5G3N2:port name="simplepriorSOAPQSPort" binding="WL5G3N3:simplepriorSOAP">
+            <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+                <wsa:Address>https://fsb.services.int.belgium.be/eProcurementServices/PTS_MercuriusService</wsa:Address>
+                <wsid:Identity xmlns:wsid="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+                    <dsig:KeyInfo xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+                        <dsig:X509Data>
+                            <dsig:X509Certificate>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</dsig:X509Certificate>
+                            <dsig:X509IssuerSerial>
+                                <dsig:X509IssuerName>CN=TERENA SSL CA 3, O=TERENA, L=Amsterdam, ST=Noord-Holland, C=NL</dsig:X509IssuerName>
+                                <dsig:X509SerialNumber>1715339288232635299908569576737891951</dsig:X509SerialNumber>
+                            </dsig:X509IssuerSerial>
+                            <dsig:X509SubjectName>CN=FEDERALSERVICEBUSINT.bosa.be, OU=20180927, O=FOD BOSA, L=Brussels, C=BE</dsig:X509SubjectName>
+                            <dsig:X509SKI>1hYQwGTf5Py/XVOQ4VVQza6iWBI=</dsig:X509SKI>
+                        </dsig:X509Data>
+                    </dsig:KeyInfo>
+                </wsid:Identity>
+            </wsa:EndpointReference>
+            <WL5G3N5:address location="https://fsb.services.int.belgium.be/eProcurementServices/PTS_MercuriusService"/>
+        </WL5G3N2:port>
+    </WL5G3N2:service>
+</WL5G3N2:definitions>
